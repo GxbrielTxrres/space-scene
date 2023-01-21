@@ -6,6 +6,7 @@ import {
 	OrbitControls,
 	Stars,
 	Preload,
+	Loader,
 } from "@react-three/drei";
 
 import { Road } from "components/Road";
@@ -28,7 +29,7 @@ export default function App({ Component, pageProps }) {
 				<Preload all />
 				<Environment resolution={64} preset="lobby" blur={1} />
 
-				<EffectComposer multisampling={1} autoClear>
+				<EffectComposer multisampling={0.5} autoClear>
 					<ChromaticAberration offset={[0.01, 0.01]} /> */
 					{/* <Glitch /> */}
 				</EffectComposer>
@@ -50,6 +51,7 @@ export default function App({ Component, pageProps }) {
 					<Road />
 				</Center>
 			</Canvas>
+			<Loader />
 			<Component {...pageProps} />;
 		</div>
 	);
