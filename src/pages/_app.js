@@ -29,9 +29,13 @@ export default function App({ Component, pageProps }) {
 				<Preload all />
 				<Environment resolution={64} preset="lobby" blur={1} />
 
-				<EffectComposer multisampling={0.5} autoClear>
-					<ChromaticAberration offset={[0.01, 0.01]} /> */
-					{/* <Glitch /> */}
+				<EffectComposer
+					disableNormalPass
+					multisampling={0.5}
+					autoClear
+					renderPriority={1}
+				>
+					<ChromaticAberration offset={[0.01, 0.01]} />
 				</EffectComposer>
 
 				<Moon />
