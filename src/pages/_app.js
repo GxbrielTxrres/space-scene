@@ -28,7 +28,7 @@ export default function App({ Component, pageProps }) {
 				<Preload all />
 				<Environment resolution={64} preset="lobby" blur={1} />
 
-				<EffectComposer multisampling={0.5} autoClear>
+				<EffectComposer multisampling={1} autoClear>
 					<ChromaticAberration offset={[0.01, 0.01]} /> */
 					{/* <Glitch /> */}
 				</EffectComposer>
@@ -37,7 +37,7 @@ export default function App({ Component, pageProps }) {
 				<Stars
 					radius={40}
 					depth={120}
-					// factor={10}
+					factor={10}
 					count={500}
 					saturation={0.4}
 					fade
