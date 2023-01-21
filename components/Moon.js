@@ -8,16 +8,23 @@ title: Moon
 
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
-
+import { useFrame, useThree } from "@react-three/fiber";
+import gsap from "gsap";
+import { useEffect } from "react";
 export function Moon(props) {
 	const moonRef = useRef();
 
-	useFrame((state) => {
-		moonRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.2);
-		moonRef.current.rotation.z = Math.cos(state.clock.elapsedTime * 0.25);
-	});
+	const { clock } = useThree();
 
+	useEffect(() => {
+		gsap.to(moonRef.current.rotation, {
+			x: Math.sin(clock.elapsedTime * 0.25),
+			z: Math.cos(clock.elapsedTime * 0.25),
+			duration: 10,
+			repeat: -1,
+			yoyo: true,
+		});
+	});
 	const { nodes, materials } = useGLTF("/moon.glb");
 	return (
 		<group
